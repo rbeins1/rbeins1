@@ -1,0 +1,41 @@
+name = "saic migration"
+description = "The SAIC/LEIDOS D6 to D7 Migration."
+package = "SAIC/LEIDOS Migration"
+core = 7.x
+
+dependencies[] = taxonomy
+dependencies[] = migrate
+dependencies[] = comment
+dependencies[] = field
+dependencies[] = file
+dependencies[] = text
+dependencies[] = path
+dependencies[] = image
+dependencies[] = list
+
+files[] = saic_migration.module
+files[] = saic_users.inc
+
+files[] = saic_anouncement_migration.inc
+files[] = saic_audio_migration.inc
+files[] = saic_contact_migration.inc
+files[] = saic_contract_migration.inc
+files[] = saic_ddp_image_migration.inc
+files[] = saic_disclaimer_migration.inc
+files[] = saic_magazine_article_migration.inc
+files[] = saic_magazine_issue_migration.inc
+
+files[] = saic_magazine_migration.inc
+files[] = saic_person_migration.inc
+files[] = saic_photo_gallery_migration.inc
+files[] = saic_press_release_migration.inc
+files[] = saic_resource_migration.inc
+files[] = saic_rotator_image_migration.inc
+files[] = saic_submenu_migration.inc
+files[] = saic_tweet_migration.inc
+files[] = saic_twitter_feed_migration.inc
+files[] = saic_video_migration.inc
+
+
+
+
