@@ -1,0 +1,43 @@
+<?php
+
+// define the source database, files and vocab IDs
+define("SOURCE_DATABASE", 'saic1');
+/*
+ *  Implement hook_migrate_api(), setting the API level to 2, for
+ *  the migration classes to be recognized by the Migrate module.
+ */
+
+function saic_migration_migrate_api() {
+    $api = array(
+        'api' => 2,
+    );
+    return $api;
+}
+
+/**
+ * Retrieve the set of term associated with a node from the D6 database.
+ */
+function saic_migration_get_terms($nvid, $tvid) {
+    $query = db_select(SOURCE_DATABASE . '.term_node', 'tn');
+    $query->join(SOURCE_DATABASE . '.term_data', 'td', 'tn.tid = td.tid');
+    $query->addField('td', 'name');
+    $query->condition('tn.vid', $nvid, '=');
+    $query->condition('td.vid', $tvid, '=');
+    $query->orderBy('tn.tid', 'ASC');
+    $result = $query->execute()->fetchCol();
+}
+
+/**
+ * Retrieve the url alias associated with the node from the D6 database.
+ */
+function saic_migration_get_url_alias($nid) {
+    $result = db_select(SOURCE_DATABASE . '.url_alias', 'ua')
+            ->fields('ua', array('dst'))
+            ->condition('ua.src', 'node/' . $nid, '=')
+            ->execute()
+            ->fetchObject();
+
+    return is_object($result) && !empty($result->dst) ? $result->dst : NULL;
+}
+
+?>
