@@ -123,7 +123,7 @@ class saicAudiosMigration extends Migration {
 
     public function prepareRow($current_row) {
         /**
-         *  @todo do some processing for this announcement , specifically with the links, thumbnail
+         *  @todo do some processing for this audio, specifically with the links, thumbnail
          */
     }
 
